@@ -11,6 +11,8 @@ namespace JWTAuthentication.Persistance.Repository.IRepository
         Task CreateUser(AppUser user);
         Task<bool> UserExits(string username);
         Task<AppUser> GetUserDetails(AppUser user);
+        Task<List<AppUser>> GetAll();
+        Task<AppUser> GetUser(int id);
         //Task UpdateUser(User user);
     }
 }

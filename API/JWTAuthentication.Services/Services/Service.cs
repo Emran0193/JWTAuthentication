@@ -4,6 +4,7 @@ using JWTAuthentication.Persistance.Entities;
 using JWTAuthentication.Persistance.Repository.IRepository;
 using JWTAuthentication.Services.Services.Interface;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,6 +41,17 @@ namespace JWTAuthentication.Services.Services
         public async Task<UserDTO> GetUserDetails(LoginDTO loginDTO)
         {
             var user = await _userRepository.GetUserDetails(_mapper.Map<AppUser>(loginDTO));
+            return _mapper.Map<UserDTO>(user);
+        }
+        public async Task<List<UserDTO>> GetAll()
+        {
+            var user = await _userRepository.GetAll();
+            return _mapper.Map<List<UserDTO>>(user);
+        }
+
+        public async Task<UserDTO> GetUser(int id)
+        {
+            var user = await _userRepository.GetUser(id);
             return _mapper.Map<UserDTO>(user);
         }
     }

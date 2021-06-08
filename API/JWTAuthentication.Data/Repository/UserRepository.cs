@@ -29,10 +29,14 @@ namespace JWTAuthentication.Persistance.Repository
         {
             return await _context.AppUsers.SingleOrDefaultAsync(x => x.UserName == user.UserName);
         }
-        //public async Task UpdateUser(User user)
-        //{
-        //    _context.Users.Update(user);
-        //    await _context.SaveChangesAsync();
-        //}
+        public async Task<List<AppUser>> GetAll()
+        {
+            return await _context.AppUsers.ToListAsync();
+        }
+
+        public async Task<AppUser> GetUser(int id)
+        {
+            return await _context.AppUsers.FindAsync(id);
+        }
     }
 }

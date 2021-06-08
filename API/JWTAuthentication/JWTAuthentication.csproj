@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JWTAuthentication.Core\JWTAuthentication.Core.csproj" />
-    <ProjectReference Include="..\JWTAuthentication.Data\JWTAuthentication.Persistance.csproj" />
+    <ProjectReference Include="..\JWTAuthentication.Data\JWTAuthentication.Data.csproj" />
     <ProjectReference Include="..\JWTAuthentication.Services\JWTAuthentication.Services.csproj" />
   </ItemGroup>
 

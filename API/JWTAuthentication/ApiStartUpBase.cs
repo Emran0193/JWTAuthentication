@@ -30,6 +30,16 @@ namespace JWTAuthentication
 
         public void RegisterDependencies(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "CorsPolicy", builder =>
+                {
+                    builder.AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .WithOrigins("http://localhost:4200");   //AllowAnyOrigin()//;
+                });
+            });
+
             var mvcBuilder = services
                 .AddControllers()
                  .AddJsonOptions(options =>
@@ -37,14 +47,7 @@ namespace JWTAuthentication
                  .AddFluentValidation(Options =>
                  {
                      Options.RegisterValidatorsFromAssemblyContaining<Startup>();
-                 });
-
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
-            {
-                builder.AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .WithOrigins("https://localhost:4200");
-            }));
+                 });            
 
             services.AddIdentityServices(Configuration);
 
